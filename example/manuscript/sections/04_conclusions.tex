@@ -1,0 +1,48 @@
+% ILLUSTRATIVE EXAMPLE ONLY — synthetic content, no scientific validity, CC0
+
+\section{Discussion}
+\label{sec:discussion}
+
+The test set $R^2$ of $0.847 \pm 0.031$ suggests that the GBR surrogate generalises
+reasonably well to compositions not seen during training, given the limited dataset size
+of 120 specimens.
+The gap between training ($0.924$) and test ($0.847$) performance is consistent
+with mild overfitting, which may be reduced by increasing the dataset size or
+applying additional regularisation.
+
+The dominance of filler content in the feature importance analysis is consistent
+with effective medium theory predictions, which assign primary importance to the
+volume fraction of the filler phase \citep{Chen2020_ILLUSTRATIVE}.
+The secondary role of aspect ratio aligns with percolation-threshold arguments
+for high-aspect-ratio fillers \citep{Liu2022_ILLUSTRATIVE}.
+
+The observed performance degradation at high filler loadings
+(Supplementary Section~S2) may be attributed to filler agglomeration,
+which reduces the effective contact area between graphene platelets and the matrix.
+This interpretation is speculative and should be investigated with targeted
+experiments before being stated as a conclusion.
+
+\paragraph{Limitations.}
+This study is limited to the synthetic design space covered by the 120-specimen dataset.
+The model cannot be expected to extrapolate reliably beyond the training distribution.
+The feature importance estimates are specific to the GBR architecture and may not
+reflect the physical importance of each variable in a broader context.
+All data in this study are synthetic; the results have no direct applicability
+to real graphene composite systems.
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+A gradient boosting regressor surrogate model was developed for predicting the thermal
+conductivity of graphene-reinforced polymer composites in a synthetic dataset.
+The model achieved $R^2 = 0.847 \pm 0.031$ on the test set, outperforming
+a linear regression baseline ($R^2 = 0.631 \pm 0.044$).
+Filler content was identified as the dominant predictor (38.4\% feature importance).
+These results demonstrate the feasibility of surrogate modelling as a screening tool
+for composite property optimisation, within the limitations stated above.
+
+\paragraph{AI use disclosure.}
+This illustrative manuscript was prepared with the assistance of the
+scientific-redaction-skills framework (Claude Code, Anthropic).
+All scientific decisions, claims, and content are the responsibility of the authors.
+\textit{(This is an illustrative disclosure statement for the example project.)}

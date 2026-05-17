@@ -1,0 +1,94 @@
+%%{init: {"theme": "base", "themeVariables": {
+  "primaryColor": "#1d3557",
+  "primaryTextColor": "#ffffff",
+  "primaryBorderColor": "#0d1b2a",
+  "lineColor": "#555555",
+  "background": "#ffffff",
+  "fontSize": "14px",
+  "fontFamily": "Georgia, 'Times New Roman', serif"
+}}}%%
+flowchart TD
+    classDef input  fill:#1d3557,color:#fff,stroke:#0d1b2a,stroke-width:2px
+    classDef skill  fill:#457b9d,color:#fff,stroke:#1d3557,stroke-width:1px
+    classDef human  fill:#2d6a4f,color:#fff,stroke:#1b4332,stroke-width:2px
+    classDef gate   fill:#c1121f,color:#fff,stroke:#780000,stroke-width:2px
+    classDef sub    fill:#a8dadc,color:#1d1d1d,stroke:#457b9d,stroke-width:1px
+    classDef output fill:#e9c46a,color:#1d1d1d,stroke:#e76f51,stroke-width:3px
+    classDef cmd    fill:#264653,color:#fff,stroke:#1d3557,stroke-width:1px
+    classDef legend fill:#f8f9fa,color:#333,stroke:#ccc,stroke-width:1px,font-style:italic
+
+    %% ── INPUTS ─────────────────────────────────────────────────────────────
+    IN1["📊 Researcher Results\nFigures · Tables · Numbers · Key findings"]:::input
+    IN2["📄 Context Documents\nTarget journal papers · Group papers · Reports"]:::input
+
+    %% ── PHASE 1 : PRE-DRAFT QUALITY GATES ──────────────────────────────────
+    subgraph PRE["① Pre-draft Quality Gates"]
+        direction TB
+        G0A["🔧 Executable Integrity Check\ncheck_manuscript_integrity.py\ncitations · figures · forbidden phrases · policy"]:::gate
+        G0C["🎨 Style Calibration\nskill_style_calibration\nalign to journal voice and group terminology"]:::skill
+        G0A --> G0C
+    end
+
+    IN1 --> G0A
+    IN2 --> G0C
+
+    H1(["👤 Human Gate 1\nResolve hard errors\nConfirm style parameters"]):::human
+    PRE --> H1
+
+    %% ── SECTION PLAN ────────────────────────────────────────────────────────
+    SPLAN["📋 Section Plan  per section\nArgument chain · Key claims · Logical flow\nScope · Target message"]:::skill
+    H1 --> SPLAN
+    H2(["👤 Human Gate 2\nApprove argument plan\nbefore any prose is written"]):::human
+    SPLAN --> H2
+
+    %% ── PHASE 2 : SECTION DRAFTING ──────────────────────────────────────────
+    subgraph DRAFT["② Section Drafting — /srs-* Commands"]
+        direction LR
+        D1["/srs-intro\nIntroduction"]:::cmd
+        D2["/srs-methods\nMethods"]:::cmd
+        D3["/srs-results\nResults"]:::cmd
+        D4["/srs-discussion\nDiscussion"]:::cmd
+        D5["/srs-figures\nFigures & Tables"]:::cmd
+        D6["/srs-sm\nSuppl. Materials"]:::cmd
+    end
+    H2 --> DRAFT
+
+    %% ── PHASE 3 : REVIEW SUBAGENTS ──────────────────────────────────────────
+    subgraph REVIEW["③ Review Subagents — parallel · bounded · read-only"]
+        direction LR
+        R1["Citation\nAudit"]:::sub
+        R2["Figure QC\n& Overclaim\nDetection"]:::sub
+        R3["Reviewer\nSimulation\n3 roles"]:::sub
+        R4["Data\nIntegrity\nReview"]:::sub
+    end
+    DRAFT --> REVIEW
+
+    H3(["👤 Human Gate 3\nRead all reports\nDecide what to address vs. rebut"]):::human
+    REVIEW --> H3
+
+    %% ── PHASE 4 : FINAL QUALITY GATES ──────────────────────────────────────
+    subgraph FINAL["④ Final Quality Gates"]
+        direction TB
+        QG["🔒 Revision Quality Gate  /srs-gate\nacceptance criteria · CLAIM_REGISTER updated"]:::gate
+        PC["📋 Policy Checklist\nAI disclosure · Data availability\nCompeting interests · Author accountability"]:::gate
+        QG --> PC
+    end
+    H3 --> QG
+
+    H4(["👤 Human Gate 4\nAuthor certifies all content\nbefore submission"]):::human
+    FINAL --> H4
+
+    %% ── OUTPUT ──────────────────────────────────────────────────────────────
+    OUT["✅ Submission-Ready Manuscript\nClaim-calibrated · Integrity-verified · Publisher-compliant"]:::output
+    H4 --> OUT
+
+    %% ── LEGEND ──────────────────────────────────────────────────────────────
+    subgraph LEGEND["Legend"]
+        direction LR
+        LA["Input / Output"]:::input
+        LB["AI Skill"]:::skill
+        LC["Quality Gate"]:::gate
+        LD(["Human Decision"]):::human
+        LE["Review Subagent"]:::sub
+        LF["Section Command"]:::cmd
+    end

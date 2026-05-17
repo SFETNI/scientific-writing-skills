@@ -1,0 +1,62 @@
+% ILLUSTRATIVE EXAMPLE ONLY — synthetic content, no scientific validity, CC0
+
+\section*{Supplementary Material}
+\label{sec:supplementary}
+
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{table}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+
+\subsection*{Table of Contents}
+\begin{itemize}
+  \item Section S1: Hyperparameter optimisation details
+  \item Section S2: Sensitivity analysis at high filler loadings
+  \item Table S1: Full synthetic dataset statistics
+  \item Figure S1: Predicted vs. observed parity plot
+\end{itemize}
+
+\subsection*{S1. Hyperparameter optimisation}
+\label{sec:sm_hyperparams}
+
+A grid search was performed over the following hyperparameter space on the training set
+using 5-fold cross-validation:
+number of estimators $\in \{100, 200, 300\}$,
+maximum depth $\in \{3, 5, 7\}$,
+learning rate $\in \{0.01, 0.05, 0.1\}$.
+The optimal configuration ($n_\text{est} = 200$, depth $= 5$, lr $= 0.05$)
+was selected based on the lowest mean RMSE across folds.
+
+\subsection*{S2. Sensitivity analysis at high filler loadings}
+\label{sec:sm_sensitivity}
+
+Model predictions at filler contents above 15~vol\% showed increased variance
+relative to the low-loading regime (Figure~S1).
+This pattern is consistent with the physical hypothesis of agglomeration
+effects at high loadings, as discussed in Section~4.
+
+\begin{figure}[htbp]
+\centering
+\fbox{\textit{[Figure S1 placeholder — parity plot, predicted vs. observed, ILLUSTRATIVE]}}
+\caption{Predicted vs. observed thermal conductivity for the GBR model on the
+test set (24 specimens). Dashed line: perfect agreement. Points at high predicted
+conductivity ($> 2.5$~W~m$^{-1}$~K$^{-1}$) show increased scatter, corresponding
+to high-filler-loading specimens. All values are synthetic. ILLUSTRATIVE.}
+\label{fig:parity}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Summary statistics of the synthetic dataset (120 specimens). ILLUSTRATIVE.}
+\label{tab:dataset_stats}
+\begin{tabular}{lrrr}
+\toprule
+Variable & Min & Mean & Max \\
+\midrule
+Filler content (vol\%) & 0.5 & 8.3 & 20.0 \\
+Aspect ratio & 10 & 142 & 500 \\
+Matrix conductivity (W~m$^{-1}$~K$^{-1}$) & 0.10 & 0.21 & 0.32 \\
+Output: thermal conductivity (W~m$^{-1}$~K$^{-1}$) & 0.21 & 1.42 & 3.84 \\
+\bottomrule
+\end{tabular}
+\end{table}

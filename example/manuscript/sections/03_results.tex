@@ -1,0 +1,66 @@
+% ILLUSTRATIVE EXAMPLE ONLY — synthetic content, no scientific validity, CC0
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Model accuracy on the test set}
+\label{sec:model_accuracy}
+
+The GBR model achieved $R^2 = 0.847 \pm 0.031$ and
+RMSE $= 0.143 \pm 0.018$~W~m$^{-1}$~K$^{-1}$ on the held-out test set
+(Table~\ref{tab:performance}).
+The mean absolute error was $0.112 \pm 0.014$~W~m$^{-1}$~K$^{-1}$.
+The training set $R^2$ was $0.924 \pm 0.012$, indicating moderate overfitting
+that remained within acceptable limits for a 120-sample dataset.
+
+\subsection{Comparison to the linear regression baseline}
+\label{sec:baseline}
+
+The GBR model outperformed the linear regression baseline across all metrics
+(Table~\ref{tab:performance}).
+The baseline achieved $R^2 = 0.631 \pm 0.044$ on the test set,
+compared to $0.847 \pm 0.031$ for GBR, corresponding to a difference of 0.216 in $R^2$.
+
+\begin{table}[htbp]
+\centering
+\caption{Performance metrics for the GBR and linear regression baseline models
+on the held-out test set (120 specimens, 80/20 split, 5-fold CV). ILLUSTRATIVE.}
+\label{tab:performance}
+\begin{tabular}{lcc}
+\toprule
+Metric & GBR & Linear regression \\
+\midrule
+$R^2$ & $0.847 \pm 0.031$ & $0.631 \pm 0.044$ \\
+RMSE (W~m$^{-1}$~K$^{-1}$) & $0.143 \pm 0.018$ & $0.241 \pm 0.031$ \\
+MAE (W~m$^{-1}$~K$^{-1}$) & $0.112 \pm 0.014$ & $0.198 \pm 0.025$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Feature importance}
+\label{sec:feature_importance_results}
+
+Filler content was identified as the dominant predictor,
+with a mean decrease in impurity of $38.4\%$ across all 200 trees
+(Figure~\ref{fig:feature_importance}).
+Aspect ratio ranked second at $27.1\%$, followed by matrix thermal conductivity at $19.6\%$.
+The remaining five variables collectively accounted for $14.9\%$ of total importance.
+
+% Figure placeholder — illustrative only
+\begin{figure}[htbp]
+\centering
+% \includegraphics[width=0.6\linewidth]{fig_feature_importance.pdf}
+\fbox{\textit{[Figure 1 placeholder — feature importance bar chart — ILLUSTRATIVE]}}
+\caption{Feature importance for the GBR model estimated by mean decrease in impurity
+over 200 trees. Filler content dominates with 38.4\% importance, followed by aspect
+ratio (27.1\%) and matrix conductivity (19.6\%). Dataset: 120 synthetic specimens. ILLUSTRATIVE.}
+\label{fig:feature_importance}
+\end{figure}
+
+\subsection{Sensitivity analysis}
+\label{sec:sensitivity}
+
+The model prediction range across all specimens spanned
+$0.21$--$3.84$~W~m$^{-1}$~K$^{-1}$,
+consistent with the physical range reported for graphene-filled polymer composites
+in the synthetic design space (Supplementary Table~S1).

@@ -1,0 +1,67 @@
+% ILLUSTRATIVE EXAMPLE ONLY
+% All data, numbers, figures, and references in this file are synthetic.
+% This manuscript has no scientific validity and must not be cited or submitted.
+% See example/README.md for details. CC0 Public Domain.
+
+\documentclass[12pt, review]{elsarticle}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+\graphicspath{{figures/}}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Thermal conductivity of graphene-reinforced polymer composites:
+  a surrogate modelling approach}
+
+\author[inst1]{A. Synthetic\corref{cor1}}
+\author[inst1]{B. Fictitious}
+\author[inst2]{C. Invented}
+
+\address[inst1]{Department of Materials Science, Illustrative University, City, Country}
+\address[inst2]{Department of Computational Engineering, Fictitious Institute, City, Country}
+
+\cortext[cor1]{Corresponding author. Email: synthetic.author@illustrative.edu (FAKE)}
+
+\begin{abstract}
+Predicting the thermal conductivity of polymer composites reinforced with graphene
+platelets is important for the design of thermal management materials.
+In this work, we develop a gradient boosting regressor (GBR) surrogate model
+trained on a synthetic dataset of 120 specimens with eight input variables.
+The model achieves a coefficient of determination of $R^2 = 0.847 \pm 0.031$
+on the test set, outperforming a linear regression baseline ($R^2 = 0.631 \pm 0.044$).
+Feature importance analysis identifies filler content as the dominant predictor
+(38.4\% importance), followed by aspect ratio (27.1\%).
+These results suggest that surrogate modelling is a viable approach for rapid
+property screening in graphene composite design.
+
+\textbf{DISCLAIMER: All data, values, and references in this manuscript are synthetic.
+This is an illustrative example for the scientific-redaction-skills framework.}
+\end{abstract}
+
+\begin{keyword}
+thermal conductivity \sep polymer composite \sep graphene \sep surrogate model
+\sep gradient boosting \sep machine learning
+\end{keyword}
+
+\end{frontmatter}
+
+\input{sections/01_introduction}
+\input{sections/02_methods}
+\input{sections/03_results}
+\input{sections/04_conclusions}
+
+\appendix
+\input{sections/05_supplementary}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references/example_references}
+
+\end{document}

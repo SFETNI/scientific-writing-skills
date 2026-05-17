@@ -1,0 +1,38 @@
+============================================================
+MANUSCRIPT INTEGRITY CHECK
+Main TeX:  example/manuscript/main.tex
+Bib file:  example/manuscript/references/example_references.bib
+Registry:  example/NUMERICAL_REGISTRY.md
+============================================================
+
+TeX files found: 6
+  example/manuscript/main.tex
+  example/manuscript/sections/01_introduction.tex
+  example/manuscript/sections/02_methods.tex
+  example/manuscript/sections/03_results.tex
+  example/manuscript/sections/04_conclusions.tex
+  example/manuscript/sections/05_supplementary.tex
+
+--- CHECK 1: Citation keys ---
+
+--- CHECK 2: Figure paths ---
+
+--- CHECK 3: Banned phrases ---
+
+--- CHECK 4: Numerical discipline ---
+
+--- CHECK 5: Policy checklist ---
+  PASS [policy]: AI disclosure statement — detected
+  INFO [policy]: Data availability statement — NOT detected — verify before submission
+  INFO [policy]: Competing interests — NOT detected — verify before submission
+  INFO [policy]: Author contributions — NOT detected — verify before submission
+
+============================================================
+SUMMARY
+  Hard errors : 0
+  Warnings    : 0
+  Info        : 3
+  Policy pass : 1
+============================================================
+
+No hard errors. Review warnings before proceeding.

@@ -1,0 +1,37 @@
+% ILLUSTRATIVE EXAMPLE ONLY — synthetic content, no scientific validity, CC0
+
+\section{Introduction}
+\label{sec:introduction}
+
+Graphene-reinforced polymer composites have attracted considerable interest as
+thermal management materials over the past two decades, driven by graphene's
+exceptional in-plane thermal conductivity of approximately 5000~W~m$^{-1}$~K$^{-1}$
+\citep{Balandin2011_ILLUSTRATIVE}.
+In contrast, the polymer matrices used in these composites typically exhibit
+conductivities in the range 0.1--0.3~W~m$^{-1}$~K$^{-1}$ \citep{Bigg1995_ILLUSTRATIVE},
+creating a strong thermodynamic incentive to engineer the filler–matrix interface
+for maximum heat transfer.
+
+Despite two decades of experimental study, the relationship between processing variables
+and composite thermal conductivity remains difficult to predict from first principles alone.
+Effective medium theories \citep{MaxwellGarnett1904_ILLUSTRATIVE} provide analytical
+bounds but do not capture the complex dependence on filler content, aspect ratio,
+interface resistance, and matrix morphology simultaneously \citep{Chen2020_ILLUSTRATIVE}.
+As a result, property optimisation has traditionally required extensive experimental campaigns,
+which are both time-consuming and resource-intensive.
+
+Surrogate modelling approaches—also known as metamodelling—offer an alternative path
+for accelerating materials design \citep{Park2021_ILLUSTRATIVE}.
+By training a data-driven model on a curated dataset of experimental or simulation results,
+a surrogate can predict material properties at a fraction of the computational cost
+of physics-based models \citep{Liu2022_ILLUSTRATIVE}.
+Applications of surrogate modelling to composite thermal conductivity have been reported
+for carbon-nanotube-reinforced matrices \citep{Kim2023_ILLUSTRATIVE}, but studies
+specifically targeting graphene platelet composites remain limited.
+
+In this work, we develop a gradient boosting regressor (GBR) surrogate model trained
+on a dataset of 120 synthetic specimens characterised by eight input variables.
+The objectives of this study are: (i) to evaluate the predictive accuracy of the GBR
+model on held-out test data; (ii) to identify the most influential input variables using
+feature importance analysis; and (iii) to characterise the prediction uncertainty
+across the experimental design space.

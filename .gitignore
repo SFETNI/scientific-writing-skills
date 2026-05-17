@@ -1,0 +1,71 @@
+# Private planning document — not for public release
+PLAN.md
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.nav
+*.snm
+*.vrb
+*.spl
+*.lot
+*.lof
+*.idx
+*.ilg
+*.ind
+
+# LaTeX-compiled PDFs (kept out of repo; compile locally)
+# Exception: example/outputs/ may contain a pre-compiled PDF for demonstration
+example/manuscript/*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environment files
+.env
+*.env
+.python-version
+
+# Context papers — user-provided, may be copyrighted
+context/target_journal/*.md
+context/target_journal/*.pdf
+context/group_papers/*.md
+context/group_papers/*.pdf
+context/reference_papers/*.md
+context/reference_papers/*.pdf
+
+# Editor and IDE
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Demo video build artifacts (regenerated locally; not tracked)
+demo/video/
+
+# User-filled project files (from templates/; do not commit your own project state here)
+# Uncomment the lines below if you have copied templates into the repo root:
+# AUTHOR_CONTEXT.md
+# NUMERICAL_REGISTRY.md
+# AGENT_HANDOFF.md
+# CLAIM_REGISTER.md

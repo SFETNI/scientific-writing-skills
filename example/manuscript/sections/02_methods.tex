@@ -1,0 +1,56 @@
+% ILLUSTRATIVE EXAMPLE ONLY — synthetic content, no scientific validity, CC0
+
+\section{Materials and Methods}
+\label{sec:methods}
+
+\subsection{Dataset}
+\label{sec:dataset}
+
+The dataset comprised 120 specimens described by eight input variables:
+filler content (vol\%), aspect ratio, matrix thermal conductivity (W~m$^{-1}$~K$^{-1}$),
+interface thermal resistance (m$^2$~K~W$^{-1}$), processing temperature (\textdegree C),
+mixing time (min), filler surface treatment (binary), and specimen thickness (mm).
+The output variable was measured in-plane thermal conductivity (W~m$^{-1}$~K$^{-1}$).
+
+All values in the dataset are synthetic and were generated to illustrate
+the surrogate modelling workflow; they have no physical validity.
+
+\subsection{Train/test split}
+\label{sec:split}
+
+The dataset was divided into a training set of 96 specimens (80\%) and
+a test set of 24 specimens (20\%) using a random split with a fixed random seed.
+No stratification was applied.
+
+\subsection{Surrogate model}
+\label{sec:model}
+
+A gradient boosting regressor (GBR) was implemented using an illustrative software package.
+The key hyperparameters were set as follows: number of estimators = 200,
+maximum tree depth = 5, learning rate = 0.05, minimum samples per leaf = 4.
+These values were selected via a preliminary grid search on the training set
+(details in Supplementary Section~S1).
+
+\subsection{Cross-validation and evaluation}
+\label{sec:evaluation}
+
+Model performance was evaluated using 5-fold cross-validation on the training set.
+The final model was then evaluated on the held-out test set.
+Performance metrics reported are the coefficient of determination ($R^2$),
+root mean square error (RMSE, W~m$^{-1}$~K$^{-1}$), and
+mean absolute error (MAE, W~m$^{-1}$~K$^{-1}$).
+Uncertainty in reported metrics was estimated as the standard deviation across
+the five cross-validation folds.
+
+\subsection{Feature importance analysis}
+\label{sec:feature_importance}
+
+Feature importance was estimated using mean decrease in impurity (MDI)
+averaged over all 200 trees in the GBR ensemble.
+
+\subsection{Software and reproducibility}
+\label{sec:software}
+
+All analyses were performed in Python (version X.Y, ILLUSTRATIVE).
+The dataset and model configuration files are provided as supplementary material
+(Supplementary Data S1 and S2, ILLUSTRATIVE).
