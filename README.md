@@ -31,7 +31,7 @@ A 5-minute walkthrough of manuscript-qc in action: catching four mechanical and 
 
 It is a human-in-the-loop quality-control and redaction framework for researchers who already have scientific material: results, figures, tables, references, draft sections, or a detailed section plan. Given that material, the framework helps draft, revise, restructure, and review manuscript sections while improving clarity, claim discipline, citation reliability, figure/table integration, and reviewer readiness.
 
-The framework does not invent findings, fabricate references, define the scientific contribution, or accept text on behalf of the author. AI assists; the researcher decides.
+The framework does not invent findings, fabricate references, define the scientific contribution, or accept text on behalf of the author. **AI assists; the researcher decides**.
 
 Its purpose is to help turn existing research into a publication-quality manuscript without introducing overclaims, citation errors, AI-writing artifacts, or integrity failures.
 
