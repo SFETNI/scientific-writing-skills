@@ -1,5 +1,3 @@
-% ILLUSTRATIVE EXAMPLE ONLY — synthetic content, no scientific validity, CC0
-
 \section*{Supplementary Material}
 \label{sec:supplementary}
 
@@ -7,56 +5,21 @@
 \renewcommand{\thefigure}{S\arabic{figure}}
 \setcounter{table}{0}
 \renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theHtable}{S\arabic{table}}
 
-\subsection*{Table of Contents}
-\begin{itemize}
-  \item Section S1: Hyperparameter optimisation details
-  \item Section S2: Sensitivity analysis at high filler loadings
-  \item Table S1: Full synthetic dataset statistics
-  \item Figure S1: Predicted vs. observed parity plot
-\end{itemize}
+\subsection*{S1. Ridge penalty cross-validation}
+\label{sec:sm_cv}
 
-\subsection*{S1. Hyperparameter optimisation}
-\label{sec:sm_hyperparams}
+Five-fold cross-validation on the training set was used to compare candidate ridge penalties. The selected penalty was \(\alpha = 1\), which had the same rounded mean CV RMSE and MAE as \(\alpha = 0\) and \(\alpha = 0.1\), with a slightly lower rounded CV RMSE standard deviation than those two candidates. This selection should be interpreted as a reproducible demonstration choice, not as evidence that \(\alpha = 1\) is universally preferred for concrete-strength prediction.
 
-A grid search was performed over the following hyperparameter space on the training set
-using 5-fold cross-validation:
-number of estimators $\in \{100, 200, 300\}$,
-maximum depth $\in \{3, 5, 7\}$,
-learning rate $\in \{0.01, 0.05, 0.1\}$.
-The optimal configuration ($n_\text{est} = 200$, depth $= 5$, lr $= 0.05$)
-was selected based on the lowest mean RMSE across folds.
+\input{tables/table_supplementary_cv}
 
-\subsection*{S2. Sensitivity analysis at high filler loadings}
-\label{sec:sm_sensitivity}
+\subsection*{S2. Artifact list used by the draft}
+\label{sec:sm_artifacts}
 
-Model predictions at filler contents above 15~vol\% showed increased variance
-relative to the low-loading regime (Figure~S1).
-This pattern is consistent with the physical hypothesis of agglomeration
-effects at high loadings, as discussed in Section~4.
+The draft uses the generated table files \texttt{table\_dataset\_summary.tex}, \texttt{table\_model\_performance.tex}, \texttt{table\_ablation.tex}, \texttt{table\_error\_by\_age.tex}, and \texttt{table\_supplementary\_cv.tex}. It uses the generated figure files \texttt{fig\_dataset\_overview.pdf}, \texttt{fig\_parity\_ridge.pdf}, \texttt{fig\_residuals.pdf}, \texttt{fig\_coefficients.pdf}, and \texttt{fig\_age\_response.pdf}. No generated data, figure, table, bibliography, registry, or output file was edited during the drafting pass.
 
-\begin{figure}[htbp]
-\centering
-\fbox{\textit{[Figure S1 placeholder — parity plot, predicted vs. observed, ILLUSTRATIVE]}}
-\caption{Predicted vs. observed thermal conductivity for the GBR model on the
-test set (24 specimens). Dashed line: perfect agreement. Points at high predicted
-conductivity ($> 2.5$~W~m$^{-1}$~K$^{-1}$) show increased scatter, corresponding
-to high-filler-loading specimens. All values are synthetic. ILLUSTRATIVE.}
-\label{fig:parity}
-\end{figure}
+\subsection*{S3. Claim-boundary notes for final registry work}
+\label{sec:sm_claim_boundaries}
 
-\begin{table}[htbp]
-\centering
-\caption{Summary statistics of the synthetic dataset (120 specimens). ILLUSTRATIVE.}
-\label{tab:dataset_stats}
-\begin{tabular}{lrrr}
-\toprule
-Variable & Min & Mean & Max \\
-\midrule
-Filler content (vol\%) & 0.5 & 8.3 & 20.0 \\
-Aspect ratio & 10 & 142 & 500 \\
-Matrix conductivity (W~m$^{-1}$~K$^{-1}$) & 0.10 & 0.21 & 0.32 \\
-Output: thermal conductivity (W~m$^{-1}$~K$^{-1}$) & 0.21 & 1.42 & 3.84 \\
-\bottomrule
-\end{tabular}
-\end{table}
+The final claim register should distinguish three evidence classes. First, statements about the official UCI dataset should be supported by the UCI repository citation and should not be mixed with fallback-derived numerical results. Second, statements about ridge regression and cross-validation should be supported by the methods references. Third, performance, ablation, coefficient, residual, and age-bin claims should be supported by the generated artifacts and numerical registry rather than by external concrete-modelling papers.

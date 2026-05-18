@@ -9,6 +9,10 @@
   <img src="docs/graphical_abstract.png" alt="manuscript-qc workflow overview" width="600">
 </p>
 
+<p align="center">
+  <img src="docs/manuscript_preparation_workflow.png" alt="Research manuscript preparation workflow" width="600">
+</p>
+
 ---
 
 ## Video demo
@@ -25,7 +29,7 @@ A 5-minute walkthrough of manuscript-qc in action: catching four mechanical and 
 
 ---
 
-## What  this is — and what it is not
+## What this is — and what it is not
 
 **This framework is not an autonomous system that writes scientific papers from scratch.**
 
@@ -35,7 +39,7 @@ The framework does not invent findings, fabricate references, define the scienti
 
 Its purpose is to help turn existing research into a publication-quality manuscript without introducing overclaims, citation errors, AI-writing artifacts, or integrity failures.
 
-The science remains  yours. The framework makes AI-assisted manuscript preparation **auditable, reviewable, and accountable**.
+The science remains yours. The framework makes AI-assisted manuscript preparation **auditable, reviewable, and accountable**.
 
 > *"These tools must never be used as a substitute for human critical thinking, expertise and evaluation. Ultimately, authors are responsible and accountable for the contents of their work."*
 > — Elsevier, [AI and AI-Assisted Technologies in Writing](https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier) (updated September 2025)
@@ -166,9 +170,9 @@ Parallel review agents for citation audit, figure QC, overclaim detection, revie
 
 `agent_context/JOURNAL_POLICY.md` — per-publisher lookup table for AI writing policies: Elsevier, Springer Nature, Nature Portfolio, IEEE, MDPI, arXiv, ICMJE. Includes an AI disclosure template.
 
-### Synthetic illustrative example
+### Demonstration worked example
 
-`example/` — a complete synthetic project (polymer-composite thermal conductivity, CC0). All data is invented. Demonstrates the full workflow from a filled `NUMERICAL_REGISTRY.md` and `CLAIM_REGISTER.md` to a working integrity check run.
+`example/` - a concrete compressive-strength ridge-regression worked example (CC0). The current artifacts use deterministic fallback data labelled `DETERMINISTIC_FALLBACK_NOT_UCI`, not verified UCI observations. The example demonstrates generated figures/tables, real citation metadata, filled project context, handoff tracking, and review reports; see `example/README.md` for the current role-status table and remaining registry/QC gaps.
 
 ---
 
@@ -214,7 +218,7 @@ A self-contained demo showing manuscript-qc catching and correcting common AI-as
 ## Five-minute example
 
 ```bash
-# Run the integrity checker on the synthetic manuscript
+# Run the integrity checker on the demonstration manuscript
 python scripts/check_manuscript_integrity.py \
   --main-tex example/manuscript/main.tex \
   --bib example/manuscript/references/example_references.bib \
@@ -291,10 +295,11 @@ scientific-writing-skills/          (public alias: manuscript-qc)
 ├── demo/
 │   └── manuscript-qc-5min-demo.mp4 ← demo video (Git LFS)
 │
-├── example/                        ← synthetic illustrative project (CC0)
+├── example/                        ← concrete worked example with deterministic fallback data (CC0)
 │
 └── docs/
     ├── graphical_abstract.png      ← visual overview of the full workflow
+    ├── manuscript_preparation_workflow.png ← manuscript preparation workflow figure
     ├── demo.png                    ← demo video thumbnail
     ├── ARCHITECTURE.md             ← pipeline diagram, skill–stage matrix, agent roles
     ├── HUMAN_IN_THE_LOOP.md        ← HiTL rationale and all 15 mandatory checkpoints
@@ -365,7 +370,7 @@ These are explicit non-goals:
 |---|---|
 | Scripts (`scripts/`) | [MIT](LICENSE) |
 | Skills, templates, documentation | [CC BY 4.0](LICENSE) |
-| Synthetic example (`example/`) | [CC0 — Public Domain](LICENSE) |
+| Demonstration example (`example/`) | [CC0 — Public Domain](LICENSE) |
 
 CC BY 4.0 was chosen over CC BY-NC to avoid restricting use by researchers at industry institutions or those under open-access mandates.
 
@@ -375,4 +380,4 @@ CC BY 4.0 was chosen over CC BY-NC to avoid restricting use by researchers at in
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to add new skills, report broken skills, request new features, or contribute to the phrase ban list.
 
-The core contribution standard: every skill file must have all five required sections (Mandate, Required inputs, Acceptance criteria, HiTL checkpoint, Fail conditions), and every example file must use clearly synthetic content with no real manuscript data.
+The core contribution standard: every skill file must have all five required sections (Mandate, Required inputs, Acceptance criteria, HiTL checkpoint, Fail conditions), and every example file must clearly label demonstration or fallback content so it cannot be mistaken for validated manuscript data.

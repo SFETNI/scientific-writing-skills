@@ -1,0 +1,56 @@
+Example artifact generation log
+================================
+
+Command: python example/scripts/generate_example_artifacts.py
+Seed: 20260518
+Dataset rows: 1030
+Dataset source_label: DETERMINISTIC_FALLBACK_NOT_UCI
+Train rows: 824
+Test rows: 206
+Missing numeric values: 0
+
+Dataset acquisition:
+- Loaded existing local dataset: /home/Elfetni/scientific-redaction-skills/example/data/concrete_compressive_strength.csv
+- Selected ridge alpha by 5-fold CV: 1
+
+Selected model:
+- Ridge alpha: 1
+- Test RMSE: 6.234 MPa
+- Test MAE: 4.964 MPa
+- Test R2: 0.886
+- Test bias: 0.032 MPa
+
+Registry candidates:
+- n_rows = 1030
+- n_features = 8
+- train_rows = 824
+- test_rows = 206
+- target_mean_mpa = 29.518
+- target_sd_mpa = 18.190
+- target_min_mpa = 2.300
+- target_max_mpa = 73.941
+- selected_ridge_alpha = 1
+- ridge_test_rmse_mpa = 6.234
+- ridge_test_mae_mpa = 4.964
+- ridge_test_r2 = 0.886
+- ridge_test_bias_mpa = 0.032
+- strongest_abs_target_correlation = cement (0.822)
+- largest_ablation_delta_rmse_mpa = cement (9.958)
+
+Generated figures:
+- manuscript/figures/fig_dataset_overview.pdf (21220 bytes)
+- manuscript/figures/fig_parity_ridge.pdf (16939 bytes)
+- manuscript/figures/fig_residuals.pdf (19747 bytes)
+- manuscript/figures/fig_coefficients.pdf (13985 bytes)
+- manuscript/figures/fig_age_response.pdf (26653 bytes)
+
+Generated tables:
+- manuscript/tables/table_dataset_summary.tex (963 bytes)
+- manuscript/tables/table_model_performance.tex (565 bytes)
+- manuscript/tables/table_ablation.tex (507 bytes)
+- manuscript/tables/table_error_by_age.tex (516 bytes)
+- manuscript/tables/table_supplementary_cv.tex (523 bytes)
+
+Notes:
+- All modelling used pandas, numpy, and matplotlib only.
+- Fallback data, if present, are a deterministic pipeline exercise and not UCI observations.

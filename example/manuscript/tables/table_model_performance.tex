@@ -1,0 +1,13 @@
+\begin{table}
+\caption{Train and test performance for baseline, ordinary least squares, and ridge models. Error and bias values are in MPa.}
+\label{tab:model-performance}
+\begin{tabular}{llrrrrr}
+\toprule
+Model & Alpha & Train RMSE (MPa) & Test RMSE (MPa) & Test MAE (MPa) & Test R2 & Test Bias (MPa) \\
+\midrule
+Training-mean baseline & -- & 18.115 & 18.447 & 15.525 & -0.002 & -0.740 \\
+Standardized OLS & 0.000 & 6.366 & 6.234 & 4.964 & 0.886 & 0.033 \\
+Standardized ridge & 1.000 & 6.366 & 6.234 & 4.964 & 0.886 & 0.032 \\
+\bottomrule
+\end{tabular}
+\end{table}

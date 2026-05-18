@@ -1,67 +1,79 @@
-# Author Context — ILLUSTRATIVE EXAMPLE
+# Author Context - Concrete Ridge Worked Example
 
-> **ILLUSTRATIVE ONLY. All content is synthetic. Not a real manuscript.**
+Fill-equivalent context for the demonstration project. Use this file as the context record for the example package.
 
 ---
 
 ## Project identity
 
-```
-PROJECT_NAME:         Thermal conductivity of graphene-reinforced polymer composites (SYNTHETIC)
-MANUSCRIPT_TITLE:     Thermal conductivity of graphene-reinforced polymer composites: a surrogate modelling approach
-SUBMISSION_STATUS:    In preparation (ILLUSTRATIVE)
-TARGET_JOURNAL:       Composites Science and Technology (ILLUSTRATIVE)
+```text
+PROJECT_NAME:         Concrete compressive-strength ridge worked example
+MANUSCRIPT_TITLE:     A ridge-regression worked example for concrete compressive-strength manuscript drafting
+SUBMISSION_STATUS:    In preparation (demonstration only)
+TARGET_JOURNAL:       Elsevier-style demonstration manuscript
 TARGET_JOURNAL_FAMILY: Elsevier
-FIELD:                Materials science, machine learning
-CONTRIBUTION_LEVEL:   Incremental
+FIELD:                Civil/materials engineering, predictive modelling, scientific writing workflow
+CONTRIBUTION_LEVEL:   Incremental workflow demonstration
 ```
 
 ## File paths
 
-```
+```text
 MAIN_TEX_PATH:        example/manuscript/main.tex
 BIB_PATH:             example/manuscript/references/example_references.bib
 REGISTRY_PATH:        example/NUMERICAL_REGISTRY.md
+CLAIM_REGISTER_PATH:  example/CLAIM_REGISTER.md
+STYLE_GUIDE_PATH:     example/STYLE_GUIDE.md
+SECTION_PLAN_PATH:    example/SECTION_PLAN.md
 BANNED_PHRASES_PATH:
 ```
 
 ## Result flexibility
 
-```
-RESULT_FLEXIBILITY:   LOCKED
+```text
+RESULT_FLEXIBILITY:   FIGURES_IMPROVABLE
 ```
 
-All synthetic values are fixed for this illustrative example. No changes to numbers should be made during the example workflow.
+Generated numerical values should remain fixed unless `example/scripts/generate_example_artifacts.py` is intentionally rerun and the registry, manuscript, and reports are regenerated together. Figure styling, labels, and captions may be improved if values do not change.
 
 ## Quality standard
 
-```
-QUALITY_STANDARD:     Peer-reviewed journal (illustrative target only)
+```text
+QUALITY_STANDARD:     Auditable worked example; not a submit-ready scientific article
 LANGUAGE:             English
-HEDGING_LEVEL:        Standard
+HEDGING_LEVEL:        Conservative
 ```
+
+## Provenance constraints
+
+```text
+DATASET_CONTEXT:      UCI Concrete Compressive Strength schema and citation context
+CURRENT_SOURCE_LABEL: DETERMINISTIC_FALLBACK_NOT_UCI
+PROVENANCE_LIMIT:     Do not present fallback-derived metrics as official UCI findings.
+```
+
+Use UCI/Yeh citations for public dataset context and schema attribution only. Use generated artifacts and registries for local fallback numbers.
 
 ## Collaborators
 
-```
-CORRESPONDING_AUTHOR: A. Synthetic (ILLUSTRATIVE — not a real person)
-CO_AUTHORS:           B. Fictitious, C. Invented (ILLUSTRATIVE)
+```text
+CORRESPONDING_AUTHOR: Scientific Redaction Skills Demonstration Team
+CO_AUTHORS:           N/A - demonstration authorship only
 ```
 
 ## Phase and task tracking
 
-```
-CURRENT_PHASE:        Drafting — Results
-ACTIVE_SECTION:       Results
-LAST_SESSION_DATE:    2026-05-16
+```text
+CURRENT_PHASE:        Review and registry/QC remediation
+ACTIVE_SECTION:       All
+LAST_SESSION_DATE:    2026-05-18
+LAST_SESSION_AGENT:   Automated audit
 ```
 
 ## Checkpoint log
 
-```
-HG0a — Integrity check cleared — 2026-05-16 (illustrative)
-HG0c — Style calibration approved — 2026-05-16 (illustrative)
-HG1  — Introduction section plan approved — 2026-05-16 (illustrative)
-HG2c — Introduction accepted — 2026-05-16 — gate PASS (illustrative)
-HG2c — Methods accepted — 2026-05-16 — gate PASS (illustrative)
+```text
+2026-05-18 - Concrete fallback draft, generated artifacts, registries, and audit outputs refreshed.
+2026-05-18 - Concrete numerical registry and claim register refreshed for the current manuscript.
+2026-05-18 - Integrity checker reports 0 hard errors and 0 warnings; remaining items are reader-facing polish and human provenance decisions.
 ```

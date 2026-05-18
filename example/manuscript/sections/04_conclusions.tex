@@ -1,48 +1,33 @@
-% ILLUSTRATIVE EXAMPLE ONLY — synthetic content, no scientific validity, CC0
-
 \section{Discussion}
 \label{sec:discussion}
 
-The test set $R^2$ of $0.847 \pm 0.031$ suggests that the GBR surrogate generalises
-reasonably well to compositions not seen during training, given the limited dataset size
-of 120 specimens.
-The gap between training ($0.924$) and test ($0.847$) performance is consistent
-with mild overfitting, which may be reduced by increasing the dataset size or
-applying additional regularisation.
+The worked example shows how a compact, transparent modelling result can be reported without overstating provenance. The selected ridge model performed well relative to a training-mean baseline on the local fallback split, with a test \(R^2\) of 0.886 and RMSE of 6.234~MPa. However, because the source label is \texttt{DETERMINISTIC\_FALLBACK\_NOT\_UCI}, these values should be read as pipeline outputs from a deterministic demonstration dataset. They do not establish benchmark performance on the official UCI Concrete Compressive Strength dataset.
 
-The dominance of filler content in the feature importance analysis is consistent
-with effective medium theory predictions, which assign primary importance to the
-volume fraction of the filler phase \citep{Chen2020_ILLUSTRATIVE}.
-The secondary role of aspect ratio aligns with percolation-threshold arguments
-for high-aspect-ratio fillers \citep{Liu2022_ILLUSTRATIVE}.
+The ordinary least-squares and ridge models had nearly identical test errors. This is plausible for a standardized linear workflow when the selected penalty is small and the design matrix does not force a large shrinkage benefit. The result is still useful for manuscript drafting because it clarifies how baseline checks, regularization choices, and cross-validation summaries can be reported without implying that ridge regression is superior for this task.
 
-The observed performance degradation at high filler loadings
-(Supplementary Section~S2) may be attributed to filler agglomeration,
-which reduces the effective contact area between graphene platelets and the matrix.
-This interpretation is speculative and should be investigated with targeted
-experiments before being stated as a conclusion.
-
-\paragraph{Limitations.}
-This study is limited to the synthetic design space covered by the 120-specimen dataset.
-The model cannot be expected to extrapolate reliably beyond the training distribution.
-The feature importance estimates are specific to the GBR architecture and may not
-reflect the physical importance of each variable in a broader context.
-All data in this study are synthetic; the results have no direct applicability
-to real graphene composite systems.
+The ablation and coefficient diagnostics consistently point to cement as an influential predictor in the local fallback data. That finding is compatible with the generated correlation and ablation summaries, but it remains a model- and data-specific observation. The manuscript therefore avoids claims about concrete mechanisms, causal mixture effects, or field deployment. Before this example could be converted into a scientific analysis of the official UCI data, the data provenance would need to be verified, the numerical registry updated, and each substantive claim mapped to a source or generated artifact.
 
 \section{Conclusions}
 \label{sec:conclusions}
 
-A gradient boosting regressor surrogate model was developed for predicting the thermal
-conductivity of graphene-reinforced polymer composites in a synthetic dataset.
-The model achieved $R^2 = 0.847 \pm 0.031$ on the test set, outperforming
-a linear regression baseline ($R^2 = 0.631 \pm 0.044$).
-Filler content was identified as the dominant predictor (38.4\% feature importance).
-These results demonstrate the feasibility of surrogate modelling as a screening tool
-for composite property optimisation, within the limitations stated above.
+This manuscript presents a concrete compressive-strength ridge-regression worked example. The local pipeline produced 1,030 fallback rows, an 824/206 train/test split, selected \(\alpha = 1\) by five-fold cross-validation, and reported held-out ridge performance of RMSE 6.234~MPa, MAE 4.964~MPa, \(R^2 = 0.886\), and bias 0.032~MPa. Cement was the strongest target-correlated feature and the largest single-feature ablation driver in the generated outputs. The central conclusion is procedural: the example demonstrates how to draft around real generated tables and figures while preserving clear evidence boundaries.
 
-\paragraph{AI use disclosure.}
-This illustrative manuscript was prepared with the assistance of the
-scientific-redaction-skills framework (Claude Code, Anthropic).
-All scientific decisions, claims, and content are the responsibility of the authors.
-\textit{(This is an illustrative disclosure statement for the example project.)}
+\section*{Data availability}
+\label{sec:data_availability}
+
+The official UCI Concrete Compressive Strength dataset is described by the UCI Machine Learning Repository \citep{Yeh1998_UCIConcreteDataset}. The data and artifacts used for this manuscript draft are local demonstration files in the example project. The current generation log labels the source as \texttt{DETERMINISTIC\_FALLBACK\_NOT\_UCI}; therefore, readers should not treat the reported numeric results as verified UCI results. Generated manuscript tables are located in \texttt{example/manuscript/tables/}, generated figures in \texttt{example/manuscript/figures/}, and provenance notes in \texttt{example/outputs/example\_generation\_log.txt}.
+
+\section*{AI disclosure}
+\label{sec:ai_disclosure}
+
+This draft was prepared with AI assistance as part of the scientific-redaction-skills demonstration workflow. The assistant was instructed to use generated artifacts, preserve provenance limits, and cite only references present in the project bibliography. Human review remains necessary before any scientific submission or public release.
+
+\section*{Competing interests}
+\label{sec:competing_interests}
+
+The demonstration authors declare no competing interests for this example manuscript.
+
+\section*{Author contributions}
+\label{sec:author_contributions}
+
+The scientific-redaction-skills demonstration workflow generated the example artifacts, prepared citation-support notes, and drafted the manuscript text. Final scientific responsibility, registry validation, and citation-audit approval are reserved for human maintainers and the subsequent review roles.

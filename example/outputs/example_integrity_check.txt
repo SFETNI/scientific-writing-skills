@@ -5,15 +5,23 @@ Bib file:  example/manuscript/references/example_references.bib
 Registry:  example/NUMERICAL_REGISTRY.md
 ============================================================
 
-TeX files found: 6
+TeX files found: 11
   example/manuscript/main.tex
   example/manuscript/sections/01_introduction.tex
   example/manuscript/sections/02_methods.tex
   example/manuscript/sections/03_results.tex
   example/manuscript/sections/04_conclusions.tex
   example/manuscript/sections/05_supplementary.tex
+  example/manuscript/tables/table_supplementary_cv.tex
+  example/manuscript/tables/table_model_performance.tex
+  example/manuscript/tables/table_error_by_age.tex
+  example/manuscript/tables/table_ablation.tex
+  example/manuscript/tables/table_dataset_summary.tex
 
 --- CHECK 1: Citation keys ---
+  INFO [citation]: .bib key 'AsterisMokos2020_ConcreteStrengthANN' is defined but never cited
+  INFO [citation]: .bib key 'HastieTibshiraniFriedman2009_ESL' is defined but never cited
+  INFO [citation]: .bib key 'Kohavi1995_CrossValidationBootstrap' is defined but never cited
 
 --- CHECK 2: Figure paths ---
 
@@ -22,17 +30,17 @@ TeX files found: 6
 --- CHECK 4: Numerical discipline ---
 
 --- CHECK 5: Policy checklist ---
-  PASS [policy]: AI disclosure statement — detected
-  INFO [policy]: Data availability statement — NOT detected — verify before submission
-  INFO [policy]: Competing interests — NOT detected — verify before submission
-  INFO [policy]: Author contributions — NOT detected — verify before submission
+  INFO [policy]: AI disclosure statement — NOT detected — verify before submission
+  PASS [policy]: Data availability statement — detected
+  PASS [policy]: Competing interests — detected
+  PASS [policy]: Author contributions — detected
 
 ============================================================
 SUMMARY
   Hard errors : 0
   Warnings    : 0
-  Info        : 3
-  Policy pass : 1
+  Info        : 4
+  Policy pass : 3
 ============================================================
 
 No hard errors. Review warnings before proceeding.

@@ -1,66 +1,63 @@
-% ILLUSTRATIVE EXAMPLE ONLY — synthetic content, no scientific validity, CC0
-
 \section{Results}
 \label{sec:results}
 
-\subsection{Model accuracy on the test set}
-\label{sec:model_accuracy}
+\subsection{Local data structure}
+\label{sec:data_structure}
 
-The GBR model achieved $R^2 = 0.847 \pm 0.031$ and
-RMSE $= 0.143 \pm 0.018$~W~m$^{-1}$~K$^{-1}$ on the held-out test set
-(Table~\ref{tab:performance}).
-The mean absolute error was $0.112 \pm 0.014$~W~m$^{-1}$~K$^{-1}$.
-The training set $R^2$ was $0.924 \pm 0.012$, indicating moderate overfitting
-that remained within acceptable limits for a 120-sample dataset.
+The local fallback dataset covered a broad range of mixture quantities and curing ages (Table~\ref{tab:dataset-summary}). Cement had the strongest absolute target correlation in the generated registry candidates, with a correlation of 0.822. This statement is limited to the current fallback data and should be mapped to the numerical registry before final release.
 
-\subsection{Comparison to the linear regression baseline}
-\label{sec:baseline}
-
-The GBR model outperformed the linear regression baseline across all metrics
-(Table~\ref{tab:performance}).
-The baseline achieved $R^2 = 0.631 \pm 0.044$ on the test set,
-compared to $0.847 \pm 0.031$ for GBR, corresponding to a difference of 0.216 in $R^2$.
-
-\begin{table}[htbp]
-\centering
-\caption{Performance metrics for the GBR and linear regression baseline models
-on the held-out test set (120 specimens, 80/20 split, 5-fold CV). ILLUSTRATIVE.}
-\label{tab:performance}
-\begin{tabular}{lcc}
-\toprule
-Metric & GBR & Linear regression \\
-\midrule
-$R^2$ & $0.847 \pm 0.031$ & $0.631 \pm 0.044$ \\
-RMSE (W~m$^{-1}$~K$^{-1}$) & $0.143 \pm 0.018$ & $0.241 \pm 0.031$ \\
-MAE (W~m$^{-1}$~K$^{-1}$) & $0.112 \pm 0.014$ & $0.198 \pm 0.025$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Feature importance}
-\label{sec:feature_importance_results}
-
-Filler content was identified as the dominant predictor,
-with a mean decrease in impurity of $38.4\%$ across all 200 trees
-(Figure~\ref{fig:feature_importance}).
-Aspect ratio ranked second at $27.1\%$, followed by matrix thermal conductivity at $19.6\%$.
-The remaining five variables collectively accounted for $14.9\%$ of total importance.
-
-% Figure placeholder — illustrative only
 \begin{figure}[htbp]
 \centering
-% \includegraphics[width=0.6\linewidth]{fig_feature_importance.pdf}
-\fbox{\textit{[Figure 1 placeholder — feature importance bar chart — ILLUSTRATIVE]}}
-\caption{Feature importance for the GBR model estimated by mean decrease in impurity
-over 200 trees. Filler content dominates with 38.4\% importance, followed by aspect
-ratio (27.1\%) and matrix conductivity (19.6\%). Dataset: 120 synthetic specimens. ILLUSTRATIVE.}
-\label{fig:feature_importance}
+\includegraphics[width=0.95\linewidth]{figures/fig_dataset_overview.pdf}
+\caption{Overview of the local concrete-strength fallback dataset used in the demonstration. The source label for the generated artifacts is \texttt{DETERMINISTIC\_FALLBACK\_NOT\_UCI}.}
+\label{fig:dataset-overview}
 \end{figure}
 
-\subsection{Sensitivity analysis}
-\label{sec:sensitivity}
+\subsection{Predictive performance}
+\label{sec:predictive_performance}
 
-The model prediction range across all specimens spanned
-$0.21$--$3.84$~W~m$^{-1}$~K$^{-1}$,
-consistent with the physical range reported for graphene-filled polymer composites
-in the synthetic design space (Supplementary Table~S1).
+The selected standardized ridge model achieved a test RMSE of 6.234~MPa, MAE of 4.964~MPa, \(R^2 = 0.886\), and bias of 0.032~MPa (Table~\ref{tab:model-performance}). The standardized ordinary least-squares comparator gave nearly identical test metrics in this generated run. Both linear models improved substantially over the training-mean baseline, which had a test RMSE of 18.447~MPa and \(R^2=-0.002\). The near equality of the ordinary least-squares and ridge results indicates that the selected ridge penalty primarily functions as a conservative regularization choice in this demonstration rather than producing a distinct accuracy gain.
+
+\input{tables/table_model_performance}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\linewidth]{figures/fig_parity_ridge.pdf}
+\caption{Observed versus predicted compressive strength for the selected ridge model on the held-out fallback test set.}
+\label{fig:parity-ridge}
+\end{figure}
+
+\subsection{Residual and age-stratified error patterns}
+\label{sec:error_patterns}
+
+The residual diagnostic plot showed the distribution of ridge prediction errors across predicted strength values (Figure~\ref{fig:residuals}). Age-stratified metrics indicated larger MAE in the youngest and oldest age groups than in the 8--28 day and 29--90 day groups (Table~\ref{tab:error-by-age}). In particular, the \(>90\)-day group contained 19 test observations and had an MAE of 6.572~MPa. Because these bins come from the local fallback split, they should be interpreted as diagnostic summaries rather than population-level evidence.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\linewidth]{figures/fig_residuals.pdf}
+\caption{Residual diagnostics for the selected ridge model on the held-out fallback test set. Residual summaries are descriptive and do not establish validity for the official UCI observations.}
+\label{fig:residuals}
+\end{figure}
+
+\input{tables/table_error_by_age}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\linewidth]{figures/fig_age_response.pdf}
+\caption{Generated age-response diagnostic for the selected ridge workflow. The display is used to inspect the local fallback data and should not be generalized beyond that provenance.}
+\label{fig:age-response}
+\end{figure}
+
+\subsection{Coefficient and ablation diagnostics}
+\label{sec:coefficients_ablation}
+
+The coefficient figure summarizes the standardized ridge coefficients for the eight predictors (Figure~\ref{fig:coefficients}). These coefficients describe conditional linear associations after standardization and shrinkage; they are not direct physical effect sizes. In the single-feature ablation analysis, removing cement produced the largest RMSE increase, from 6.234~MPa to 16.191~MPa, for a delta of 9.958~MPa (Table~\ref{tab:ablation}). Removing blast-furnace slag and age also increased RMSE by more than 1~MPa. The small negative delta for coarse aggregate means that this particular ablation run produced a slightly lower test RMSE after removing that feature; it should not be overinterpreted.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\linewidth]{figures/fig_coefficients.pdf}
+\caption{Standardized ridge coefficients for the selected model. Coefficients are model diagnostics for the local fallback data rather than causal estimates.}
+\label{fig:coefficients}
+\end{figure}
+
+\input{tables/table_ablation}

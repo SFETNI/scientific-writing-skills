@@ -1,56 +1,38 @@
-% ILLUSTRATIVE EXAMPLE ONLY — synthetic content, no scientific validity, CC0
-
 \section{Materials and Methods}
 \label{sec:methods}
 
-\subsection{Dataset}
+\subsection{Dataset and provenance}
 \label{sec:dataset}
 
-The dataset comprised 120 specimens described by eight input variables:
-filler content (vol\%), aspect ratio, matrix thermal conductivity (W~m$^{-1}$~K$^{-1}$),
-interface thermal resistance (m$^2$~K~W$^{-1}$), processing temperature (\textdegree C),
-mixing time (min), filler surface treatment (binary), and specimen thickness (mm).
-The output variable was measured in-plane thermal conductivity (W~m$^{-1}$~K$^{-1}$).
+The local dataset contained 1,030 rows, eight input variables, and one target variable, compressive strength in MPa. The input variables were cement, blast-furnace slag, fly ash, water, superplasticizer, coarse aggregate, fine aggregate, and age. This variable set follows the intended concrete-strength benchmark context described by the UCI repository \citep{Yeh1998_UCIConcreteDataset}; however, the generation log for the current project labels the local source as \texttt{DETERMINISTIC\_FALLBACK\_NOT\_UCI}. Consequently, all descriptive statistics and model outputs below are treated as fallback demonstration outputs.
 
-All values in the dataset are synthetic and were generated to illustrate
-the surrogate modelling workflow; they have no physical validity.
+\begingroup
+\catcode`\_=12
+\input{tables/table_dataset_summary}
+\endgroup
 
-\subsection{Train/test split}
-\label{sec:split}
+The generated summary table reported no missing numeric values in the local data. The compressive-strength target had a mean of 29.518~MPa, standard deviation of 18.190~MPa, minimum of 2.300~MPa, and maximum of 73.941~MPa. These values are not used as evidence about the official UCI dataset unless independent provenance verification is completed.
 
-The dataset was divided into a training set of 96 specimens (80\%) and
-a test set of 24 specimens (20\%) using a random split with a fixed random seed.
-No stratification was applied.
+\subsection{Train/test split and preprocessing}
+\label{sec:split_preprocessing}
 
-\subsection{Surrogate model}
-\label{sec:model}
+The artifact-generation pipeline used an 80/20 split, yielding 824 training rows and 206 test rows. Numeric predictors were standardized for the ordinary least-squares and ridge-regression models. The training-mean baseline predicted the training-set mean response for all test observations. No claim is made that the split is unique or optimal; it is a fixed demonstration split used to produce the accompanying tables and figures.
 
-A gradient boosting regressor (GBR) was implemented using an illustrative software package.
-The key hyperparameters were set as follows: number of estimators = 200,
-maximum tree depth = 5, learning rate = 0.05, minimum samples per leaf = 4.
-These values were selected via a preliminary grid search on the training set
-(details in Supplementary Section~S1).
+\subsection{Ridge model}
+\label{sec:ridge_model}
 
-\subsection{Cross-validation and evaluation}
+Ridge regression was used as the selected model because it provides a transparent regularized baseline. For standardized predictors, the fitted coefficients minimize
+\begin{equation}
+  \sum_{i=1}^{n}\left(y_i - \beta_0 - \mathbf{x}_i^\top\boldsymbol{\beta}\right)^2 + \alpha \sum_{j=1}^{p}\beta_j^2,
+\end{equation}
+where \(y_i\) is compressive strength, \(\mathbf{x}_i\) is the standardized predictor vector, \(p=8\), and \(\alpha\) is the ridge penalty. The selected model used \(\alpha = 1\). Ordinary least squares with \(\alpha=0\) was retained as a closely related comparator, and the training-mean baseline was included to check that the fitted models improved on a trivial prediction rule.
+
+\subsection{Cross-validation and evaluation metrics}
 \label{sec:evaluation}
 
-Model performance was evaluated using 5-fold cross-validation on the training set.
-The final model was then evaluated on the held-out test set.
-Performance metrics reported are the coefficient of determination ($R^2$),
-root mean square error (RMSE, W~m$^{-1}$~K$^{-1}$), and
-mean absolute error (MAE, W~m$^{-1}$~K$^{-1}$).
-Uncertainty in reported metrics was estimated as the standard deviation across
-the five cross-validation folds.
+The ridge penalty was selected from a small candidate grid using five-fold cross-validation on the training data, a standard validation approach for predictive modelling \citep{Stone1974_CrossValidation}. Performance was reported as root mean square error (RMSE), mean absolute error (MAE), coefficient of determination (\(R^2\)), and prediction bias in MPa. Test-set metrics were computed once on the held-out test set.
 
-\subsection{Feature importance analysis}
-\label{sec:feature_importance}
+\subsection{Diagnostic analyses}
+\label{sec:diagnostics}
 
-Feature importance was estimated using mean decrease in impurity (MDI)
-averaged over all 200 trees in the GBR ensemble.
-
-\subsection{Software and reproducibility}
-\label{sec:software}
-
-All analyses were performed in Python (version X.Y, ILLUSTRATIVE).
-The dataset and model configuration files are provided as supplementary material
-(Supplementary Data S1 and S2, ILLUSTRATIVE).
+The generated diagnostic outputs included a dataset overview, parity plot, residual plot, standardized coefficient plot, and age-response display. A single-feature ablation analysis refitted the selected ridge workflow after removing one input variable at a time. The ablation table is interpreted as a model-dependence diagnostic for the local fallback data, not as a causal analysis of concrete chemistry.

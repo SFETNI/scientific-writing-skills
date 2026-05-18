@@ -1,9 +1,7 @@
-% ILLUSTRATIVE EXAMPLE ONLY
-% All data, numbers, figures, and references in this file are synthetic.
-% This manuscript has no scientific validity and must not be cited or submitted.
-% See example/README.md for details. CC0 Public Domain.
+% Demonstration manuscript for the scientific-redaction-skills framework.
+% Current local artifacts use deterministic fallback data, not verified UCI observations.
 
-\documentclass[12pt, review]{elsarticle}
+\documentclass[10pt]{elsarticle}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -18,37 +16,20 @@
 
 \begin{frontmatter}
 
-\title{Thermal conductivity of graphene-reinforced polymer composites:
-  a surrogate modelling approach}
+\title{A ridge-regression worked example for concrete compressive-strength manuscript drafting}
 
-\author[inst1]{A. Synthetic\corref{cor1}}
-\author[inst1]{B. Fictitious}
-\author[inst2]{C. Invented}
+\author[inst1]{Scientific Redaction Skills Demonstration Team\corref{cor1}}
 
-\address[inst1]{Department of Materials Science, Illustrative University, City, Country}
-\address[inst2]{Department of Computational Engineering, Fictitious Institute, City, Country}
+\address[inst1]{Demonstration project, scientific-redaction-skills framework}
 
-\cortext[cor1]{Corresponding author. Email: synthetic.author@illustrative.edu (FAKE)}
+\cortext[cor1]{Corresponding author. Email: example@example.invalid}
 
 \begin{abstract}
-Predicting the thermal conductivity of polymer composites reinforced with graphene
-platelets is important for the design of thermal management materials.
-In this work, we develop a gradient boosting regressor (GBR) surrogate model
-trained on a synthetic dataset of 120 specimens with eight input variables.
-The model achieves a coefficient of determination of $R^2 = 0.847 \pm 0.031$
-on the test set, outperforming a linear regression baseline ($R^2 = 0.631 \pm 0.044$).
-Feature importance analysis identifies filler content as the dominant predictor
-(38.4\% importance), followed by aspect ratio (27.1\%).
-These results suggest that surrogate modelling is a viable approach for rapid
-property screening in graphene composite design.
-
-\textbf{DISCLAIMER: All data, values, and references in this manuscript are synthetic.
-This is an illustrative example for the scientific-redaction-skills framework.}
+This worked example demonstrates a conservative manuscript-drafting workflow for a concrete compressive-strength prediction task. The workflow is designed around the variable schema of the UCI Concrete Compressive Strength dataset, which is a widely used public benchmark for concrete-strength modelling; however, the current local artifacts are labelled \texttt{DETERMINISTIC\_FALLBACK\_NOT\_UCI} and must not be interpreted as verified UCI observations. A standardized ridge-regression model was fitted to 1,030 local rows with eight input variables and a compressive-strength target. In an 80/20 train/test split, the selected ridge model used \(\alpha = 1\) and achieved a test RMSE of 6.234~MPa, MAE of 4.964~MPa, \(R^2 = 0.886\), and bias of 0.032~MPa. Single-feature ablation identified cement as the largest contributor to predictive accuracy in the local fallback data, with a 9.958~MPa increase in test RMSE when removed. The results are presented as an auditable drafting demonstration rather than a new concrete-science finding.
 \end{abstract}
 
 \begin{keyword}
-thermal conductivity \sep polymer composite \sep graphene \sep surrogate model
-\sep gradient boosting \sep machine learning
+concrete compressive strength \sep ridge regression \sep worked example \sep reproducible manuscript \sep deterministic fallback data
 \end{keyword}
 
 \end{frontmatter}
@@ -61,7 +42,10 @@ thermal conductivity \sep polymer composite \sep graphene \sep surrogate model
 \appendix
 \input{sections/05_supplementary}
 
+\begingroup
+\footnotesize
 \bibliographystyle{elsarticle-num}
 \bibliography{references/example_references}
+\endgroup
 
 \end{document}
