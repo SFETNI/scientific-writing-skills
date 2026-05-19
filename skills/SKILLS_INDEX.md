@@ -32,6 +32,7 @@ Use this table to find the right skill for a given task. Read the linked skill f
 | Standard agent task protocol | `workflow/skill_task_protocol.md` | Process document — no output approval required |
 | Human checkpoint manifest | `workflow/skill_human_checkpoints.md` | Process document — defines all mandatory gates |
 | End-of-task process trace | `workflow/skill_process_trace.md` | Required for every agent task |
+| Convert repeated human feedback into reusable skill rules | `workflow/skill_process_trace.md` + relevant domain skill | Human confirms no project-specific findings or data are transferred |
 
 ## Slash command routing
 

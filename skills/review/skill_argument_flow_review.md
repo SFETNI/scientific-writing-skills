@@ -31,6 +31,21 @@ A well-structured scientific manuscript advances through these steps:
 3. The Discussion does not introduce new results.
 4. Limitations are stated explicitly (not omitted).
 5. The final sentence of the manuscript states a concrete actionable conclusion.
+6. Within Results/Discussion, the evidence that justifies selecting a focal case appears before detailed interpretation of that selected case.
+7. Reordered sections preserve coherent figure/table numbering, cross-reference order, and transition sentences.
+
+
+## Local order checks within Results and Discussion
+
+In addition to the manuscript-wide argument map, inspect the local order of subsections:
+
+- **Prerequisite evidence:** Does the reader see the benchmark, hierarchy, screen, or comparison that justifies the focal item before the text analyzes that item in detail?
+- **Transition logic:** Does the first sentence of each subsection depend only on evidence that has already been introduced?
+- **Figure sequence:** Do figure and table numbers follow the order in which evidence is needed by the argument?
+- **No selected-item inversion:** Flag cases where the manuscript interprets a selected model, condition, material, cohort, or method before explaining why it was selected.
+- **No orphaned cross-reference ranges:** After reordering, check ranges such as "Figs. X-Y" and references to earlier/later sections.
+
+This review must remain content-agnostic: record the structural issue, not project-specific findings or numerical outcomes.
 
 ## Human-in-the-loop checkpoint
 
@@ -45,6 +60,7 @@ Human reviews the argument map and must:
 - The Discussion introduces a new result not shown in the Results section.
 - No limitation is stated anywhere in the manuscript.
 - The argument map cannot be reconstructed from the text (incoherent structure).
+- A focal item is analyzed in detail before the comparison or selection rationale that makes it focal.
 
 ## Output format
 

@@ -35,6 +35,17 @@ Some checks are advisory and non-blocking:
 - `skill_argument_flow_review.md` concerns — the agent flags issues; the author decides scope
 - `skill_visual_consistency.md` warnings — the author decides which corrections are worth making
 
+
+## Human feedback as reusable learning
+
+When the human provides post-draft or rereading feedback, classify it before acting:
+
+- **Project-specific:** belongs in the manuscript, claim register, decision log, or handoff only.
+- **Reusable skill rule:** belongs in the relevant skill file if it improves future manuscripts without carrying project-specific data.
+- **Command/workflow rule:** belongs in a slash command or workflow file if it changes when agents should activate a skill or checkpoint.
+
+The human must be able to see which class was chosen. If a skill is updated, the agent must state the exact file and the generic rule added. Never copy unpublished results, numerical values, or manuscript-specific conclusions into shared skills.
+
 ## Documenting checkpoint completion
 
 When a checkpoint is cleared, record it in `AGENT_HANDOFF.md`:

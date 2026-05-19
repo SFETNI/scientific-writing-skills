@@ -38,11 +38,20 @@ For each figure:
 - [ ] File format is acceptable (typically EPS, PDF, TIFF, or PNG at specified DPI)
 - [ ] Colour mode is correct (RGB for online, CMYK for print if required)
 
+### Integration and production readiness
+- [ ] Active figure filenames match the manuscript figure numbers or the documented journal naming convention
+- [ ] The figure number, caption, LaTeX label, source plan, and output manifest all agree
+- [ ] Reordered figures do not leave stale filenames, captions, cross-reference ranges, or manifest rows
+- [ ] Large figures do not create avoidable figure-only pages in the compiled draft unless the journal requires full-page presentation
+- [ ] The compiled PDF was visually spot-checked after resizing, renaming, or changing float placement
+
 ## Acceptance criteria
 
 1. All readability checks pass.
 2. All labels are consistent with `STYLE_GUIDE.md`.
 3. Caption states the main message.
 4. Journal dimension/format requirements met.
+5. Figure filenames, manuscript numbering, labels, captions, and output manifests are internally consistent.
+6. The compiled layout has been checked for avoidable float-only pages, excessive white space, or figures detached from their callout text.
 
 ## Human-in-the-loop checkpoint

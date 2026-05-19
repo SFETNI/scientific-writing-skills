@@ -42,6 +42,24 @@ CHECKPOINT STATUS
 === END TRACE ===
 ```
 
+
+## Experience-to-skill update rule
+
+At the end of a substantial revision session, decide whether any lesson should become a reusable skill rule.
+
+Update a skill only when the lesson is:
+- general across manuscripts or projects;
+- procedural, structural, stylistic, or quality-control oriented;
+- independent of the specific results, numerical values, dataset, model, figure, or findings from the current manuscript.
+
+Do not transfer into this repository:
+- manuscript-specific results or findings;
+- numerical values from a project;
+- unpublished data, figure-specific conclusions, or project-specific model names;
+- one-off wording preferences that do not generalize.
+
+When a reusable lesson is added, record it in the process trace as a generic rule and list the skill file changed. This creates a return-of-experience loop without leaking project-specific content.
+
 ## Usage
 
 1. At the end of every task, produce a process trace using this template.

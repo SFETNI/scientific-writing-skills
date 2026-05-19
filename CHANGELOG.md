@@ -9,7 +9,14 @@ This project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Generic return-of-experience rules for converting repeated human feedback into reusable skills without transferring project-specific data, findings, model names, or numerical results.
+- Results-ordering checks requiring selection/comparison evidence before detailed selected-item analysis.
+- Figure integration checks for filename/number alignment, stale cross-references after reordering, and avoidable figure-only pages in compiled drafts.
+- Caption guidance for distinguishing modified terms, monitored diagnostics, relative-change quantities, residuals, penalties, and prediction errors.
+
 ---
+
 
 ## [0.1.0] — 2026-05-16
 

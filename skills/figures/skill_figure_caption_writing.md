@@ -26,6 +26,8 @@ Draft captions for figures and tables that state the main message, describe what
 4. Model or method names match `STYLE_GUIDE.md` preferred naming.
 5. Caption is complete as a standalone description (no forward references to the main text required).
 6. Caption length is within journal limits (typically 150–300 words for a complex multi-panel figure).
+7. Captions for ablations, sensitivity analyses, diagnostics, or normalized quantities explicitly distinguish the modified input/term from the monitored output/diagnostic.
+8. The caption defines any relative-change, ratio, residual, score, penalty, or post-selection diagnostic sufficiently to prevent confusion with ordinary prediction error or the primary outcome metric.
 
 ## Human-in-the-loop checkpoint
 
@@ -39,6 +41,7 @@ Human must:
 - Caption opens with "Figure X shows..." (rewrite to open with the finding).
 - A value in the caption differs from `NUMERICAL_REGISTRY.md`.
 - Error bars are described but not defined (SD? SE? CI? Range?).
+- A generic term such as "error", "effect", "response", or "residual" is used for multiple different quantities without definition.
 
 ## Table caption note
 
