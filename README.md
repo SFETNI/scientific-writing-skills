@@ -29,7 +29,7 @@ A 5-minute walkthrough of manuscript-qc in action: catching four mechanical and 
 
 ---
 
-## What this is — and what it is not
+## What this is — and what it is not ?
 
 **This framework is not an autonomous system that writes scientific papers from scratch.**
 
