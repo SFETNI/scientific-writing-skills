@@ -15,7 +15,7 @@
 
 ---
 
-## Video demo
+## Video demo (5-minute)
 
 A 5-minute walkthrough of manuscript-qc in action: catching four mechanical and two semantic failures in a synthetic manuscript section, stepping through the before/after correction, and completing the final quality gate.
 
